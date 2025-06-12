@@ -1,0 +1,644 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	color: whitesmoke;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+nav {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: sienna;
+	height: 100px;
+	width: 100%;
+}
+
+ol {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
+.nav-list {
+	list-style: none;
+	cursor: pointer;
+	letter-spacing: 1px;
+	font-size: 1.2rem;
+}
+
+.nav-list a {
+	text-decoration: none;
+	color: whitesmoke;
+}
+
+.nav-list a:hover {
+	text-decoration: underline;
+}
+
+#logo img {
+	height: 80px;
+	width: 90px;
+	object-fit: contain;
+}
+
+#login {
+	position: relative;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+	padding: 10px;
+}
+
+#login:hover .user-dropdown {
+	display: block;
+}
+
+.user-dropdown {
+	display: none;
+	position: absolute;
+	right: -200%;
+	top: 100%;
+	background-color: sienna;
+	min-width: 200px;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	border-top: 3px solid goldenrod;
+}
+
+.dropdown-header {
+	padding: 15px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+	color: goldenrod;
+	font-size: 1.1rem;
+}
+
+.dropdown-options {
+	padding: 10px 0;
+}
+
+.dropdown-options a {
+	display: block;
+	padding: 12px 20px;
+	color: white;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+.dropdown-options a:hover {
+	background-color: rgba(218, 165, 32, 0.2);
+	padding-left: 25px;
+	color: goldenrod;
+}
+
+.dropdown-options a i {
+	margin-right: 10px;
+	width: 20px;
+	text-align: center;
+}
+
+.videos {
+	width: 100%;
+	height: calc(100vh - 100px);
+	position: relative;
+	overflow: hidden;
+}
+
+.videos video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.video-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.video-overlay h1 {
+	color: white;
+	font-size: 50px;
+	letter-spacing: 10px;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
+}
+
+.video-overlay p {
+	color: burlywood;
+	font-size: 1.5rem;
+	letter-spacing: 2px;
+}
+
+#login {
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+/* Book Now Section */
+.book-now-section {
+	height: 100vh;
+	display: flex;
+	background-color: #1a1a1a;
+}
+
+.book-form {
+	flex: 1;
+	padding: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: beige;
+}
+
+.book-form h2 {
+	color: sienna;
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+	letter-spacing: 3px;
+	text-align: center;
+}
+
+.book-form form {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	max-width: 500px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.book-form input {
+	padding: 18px;
+	border: 2px solid goldenrod;
+	background: rgba(255, 255, 255, 0.1);
+	font-size: 1rem;
+	border-radius: 4px;
+}
+
+.book-form input::placeholder {
+	color: rgba(0, 0, 0, 0.7);
+}
+
+.form-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.book-form button {
+	padding: 18px;
+	background-color: goldenrod;
+	color: black;
+	border: none;
+	font-size: 1.2rem;
+	cursor: pointer;
+	letter-spacing: 1px;
+	border-radius: 4px;
+	width: 100%;
+	transition: background 0.3s;
+}
+
+.book-form button:hover {
+	background-color: #e6c200;
+}
+
+.register-link {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.register-link a {
+	color: goldenrod;
+	text-decoration: none;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.register-link a:hover {
+	text-decoration: underline;
+}
+
+.book-image {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px;
+	background-color: beige;
+}
+
+.book-image img {
+	width: 100%;
+	height: 70%;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@media ( max-width : 768px) {
+	.book-now-section {
+		flex-direction: column;
+	}
+	.book-form, .book-image {
+		flex: none;
+		width: 100%;
+	}
+}
+
+/* Destinations Grid Section */
+.destinations-section {
+	padding: 80px 40px;
+	background-color: #1a1a1a;
+}
+
+.section-title {
+	text-align: center;
+	font-size: 2.5rem;
+	margin-bottom: 50px;
+	letter-spacing: 5px;
+	color: goldenrod;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.destinations-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.destination-card {
+	background-color: sienna;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.destination-image {
+	height: 250px;
+	overflow: hidden;
+}
+
+.destination-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+
+.destination-card:hover .destination-image img {
+	transform: scale(1.1);
+}
+
+.destination-info {
+	padding: 20px;
+	text-align: center;
+}
+
+.destination-info h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.destination-info p {
+	font-size: 1rem;
+	color: burlywood;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.destination-info i {
+	color: goldenrod;
+}
+
+@media ( max-width : 1024px) {
+	.destinations-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media ( max-width : 768px) {
+	.destinations-grid {
+		grid-template-columns: 1fr;
+	}
+	.section-title {
+		font-size: 2rem;
+	}
+}
+
+/* --- Services Section --- */
+.services-section {
+	background-color: beige;
+	padding: 80px 5%;
+	width: 100%;
+}
+
+.services-title {
+	text-align: center;
+	font-size: 2.5rem;
+	color: sienna;
+	margin-bottom: 60px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+	justify-content: center;
+}
+
+.service-card {
+	background-color: white;
+	border-radius: 15px;
+	padding: 30px;
+	text-align: center;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-card i {
+	font-size: 2.8rem;
+	color: goldenrod;
+	margin-bottom: 20px;
+}
+
+.service-card h3 {
+	color: sienna;
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+}
+
+.service-card p {
+	color: #444;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+/* Custom layout: 3 in first row, 2 in second row */
+.services-grid>.service-card:nth-child(4), .services-grid>.service-card:nth-child(5)
+	{
+	grid-column: span 1;
+}
+
+@media ( min-width : 1025px) {
+	.services-grid {
+		grid-template-columns: repeat(3, 1fr);
+		grid-auto-rows: minmax(200px, auto);
+	}
+	.services-grid>.service-card:nth-child(4) {
+		grid-column: 1/span 1;
+	}
+	.services-grid>.service-card:nth-child(5) {
+		grid-column: 2/span 1;
+	}
+}
+
+@media ( max-width : 1024px) {
+	.services-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media ( max-width : 768px) {
+	.services-grid {
+		grid-template-columns: 1fr;
+	}
+	.services-title {
+		font-size: 2rem;
+	}
+}
+
+/* Reviews Section */
+.reviews-section {
+	background-color: beige;
+	padding: 60px 20px;
+	text-align: center;
+}
+
+.reviews-section h2 {
+	color: sienna;
+	font-size: 2rem;
+	margin-bottom: 40px;
+}
+
+.reviews-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.review-card {
+	background: white;
+	padding: 25px;
+	border-radius: 15px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+	transform: translateY(-5px);
+}
+
+.review-card img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-bottom: 15px;
+}
+
+.review-card p {
+	font-style: italic;
+	font-size: 1rem;
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.review-card h4 {
+	font-weight: 600;
+	color: goldenrod;
+}
+
+/* Footer Styles */
+.site-footer {
+	background-color: sienna;
+	color: white;
+	padding: 60px 0 0;
+	position: relative;
+}
+
+.footer-content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 40px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+.footer-column {
+	margin-bottom: 30px;
+}
+
+.footer-column h3 {
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	position: relative;
+	padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 50px;
+	height: 2px;
+	background: goldenrod;
+}
+
+.footer-column p {
+	margin-bottom: 20px;
+	line-height: 1.6;
+	color: burlywood;
+}
+
+.footer-column ul {
+	list-style: none;
+}
+
+.footer-column ul li {
+	margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+	color: burlywood;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+	color: goldenrod;
+	padding-left: 5px;
+}
+
+.social-links {
+	display: flex;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.social-links a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	color: white;
+	transition: all 0.3s;
+}
+
+.social-links a:hover {
+	background: goldenrod;
+	transform: translateY(-3px);
+}
+
+.newsletter-form {
+	display: flex;
+	margin-top: 20px;
+}
+
+.newsletter-form input {
+	flex: 1;
+	padding: 12px;
+	border: none;
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+.newsletter-form input::placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form button {
+	width: 50px;
+	background: goldenrod;
+	color: black;
+	border: none;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+
+.newsletter-form button:hover {
+	background: #e6c200;
+}
+
+.footer-bottom {
+	text-align: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.2);
+	margin-top: 40px;
+	color: burlywood;
+}
+
+@media ( max-width : 768px) {
+	.footer-content {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	.footer-column {
+		text-align: center;
+	}
+	.footer-column h3::after {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.social-links {
+		justify-content: center;
+	}
+}
