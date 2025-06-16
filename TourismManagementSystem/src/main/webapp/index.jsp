@@ -52,8 +52,8 @@
 		<div class="book-form">
 			<h2>LOGIN TO EXPLORE</h2>
 			<form action="loginSubmit" method="post">
-				<input type="email" placeholder="Email Address" required> <input
-					type="password" placeholder="Password" required>
+				<input style="color: sienna" type="email" placeholder="Email Address" name="email" required>
+				 <input style="color: sienna" type="password" placeholder="Password" name="password" required>
 
 				<button type="submit">LOGIN</button>
 				<div class="register-link">
@@ -78,10 +78,9 @@
 					<img src="Images/Munnar_photo.jpg" alt="Mountain Resort">
 				</div>
 				<div class="destination-info">
-					<h3>Alpine Peaks Resort</h3>
+					<h3>Munnar</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 123 Mountain View Rd, Swiss
-						Alps
+						<i class="fas fa-map-marker-alt"></i> 123 Mountain View Rd, Munnar
 					</p>
 				</div>
 			</div>
@@ -91,10 +90,9 @@
 					<img src="Images/Ladakh_photo.jpg" alt="Beach Resort">
 				</div>
 				<div class="destination-info">
-					<h3>Golden Sands Paradise</h3>
+					<h3>Ladakh</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 456 Coastal Highway,
-						Maldives
+						<i class="fas fa-map-marker-alt"></i> 123 riverbank Ave, Ladakh
 					</p>
 				</div>
 			</div>
@@ -104,9 +102,9 @@
 					<img src="Images/Meghalaya_photo.webp" alt="Desert Camp">
 				</div>
 				<div class="destination-info">
-					<h3>Sahara Nights Camp</h3>
+					<h3>Meghalaya</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 789 Dune Street, Dubai
+						<i class="fas fa-map-marker-alt"></i> 798 Rainforest Rd, Meghalaya
 					</p>
 				</div>
 			</div>
@@ -117,9 +115,9 @@
 					<img src="Images/Kanyakumari_photo.jpg" alt="Forest Retreat">
 				</div>
 				<div class="destination-info">
-					<h3>Emerald Forest Lodge</h3>
+					<h3>Kanyakumari</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 101 Jungle Trail, Amazon
+						<i class="fas fa-map-marker-alt"></i> 456 Coastal Rd, Kanyakumari
 					</p>
 				</div>
 			</div>
@@ -129,9 +127,9 @@
 					<img src="Images/Gandikota_photo.jpg" alt="City Hotel">
 				</div>
 				<div class="destination-info">
-					<h3>Metropolitan Towers</h3>
+					<h3>Gandikota</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 202 Skyline Ave, New York
+						<i class="fas fa-map-marker-alt"></i> 789 Canyon View St, Gandikota
 					</p>
 				</div>
 			</div>
@@ -141,9 +139,9 @@
 					<img src="Images/Meghalaya1.jpg" alt="Private Island">
 				</div>
 				<div class="destination-info">
-					<h3>Coral Island Retreat</h3>
+					<h3>Meghalaya</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 303 Lagoon Lane, Fiji
+						<i class="fas fa-map-marker-alt"></i> 123 Waterfall Lane, Meghalaya
 					</p>
 				</div>
 			</div>
@@ -154,9 +152,9 @@
 					<img src="Images/Kerala_backwaters_photo.jpg" alt="Mountain Cabin">
 				</div>
 				<div class="destination-info">
-					<h3>Snowpeak Cabin</h3>
+					<h3>Allepey</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 404 Frostbite Pass, Canada
+						<i class="fas fa-map-marker-alt"></i> 789 Backwater Blvd, Allepey
 					</p>
 				</div>
 			</div>
@@ -166,9 +164,9 @@
 					<img src="Images/Gujarat_photo.jpeg" alt="Vineyard">
 				</div>
 				<div class="destination-info">
-					<h3>Chateau Vineyard</h3>
+					<h3>Rann of Kutch</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 505 Grape Valley, France
+						<i class="fas fa-map-marker-alt"></i> 456 Desert Oasis Rd, Gujarat
 					</p>
 				</div>
 			</div>
@@ -178,9 +176,9 @@
 					<img src="Images/Alleppy_photo.webp" alt="Safari Camp">
 				</div>
 				<div class="destination-info">
-					<h3>Savanna Safari Lodge</h3>
+					<h3>Allepey BackWaters</h3>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 606 Wild Trail, Kenya
+						<i class="fas fa-map-marker-alt"></i> 123 Lagoon Lane, Allepey
 					</p>
 				</div>
 			</div>
@@ -233,19 +231,19 @@
 				<img src="Images/Virat_photo.jpeg" alt="Sarah A.">
 				<p>"Amazing experience! Everything was perfectly organized. Will
 					definitely book again!"</p>
-				<h4>Sarah A.</h4>
+				<h4>Virat Kohli</h4>
 			</div>
 			<div class="review-card">
 				<img src="Images/Ronaldo_photo.webp" alt="Ahmed K.">
 				<p>"Professional service and friendly staff. Made our trip
 					memorable and stress-free!"</p>
-				<h4>Ahmed K.</h4>
+				<h4>Cristiano Ronaldo</h4>
 			</div>
 			<div class="review-card">
 				<img src="Images/Lewis_photo.jpeg" alt="Priya S.">
 				<p>"From ticket booking to hotel stay, everything was smooth.
 					Highly recommend them!"</p>
-				<h4>Priya S.</h4>
+				<h4>Lewis Hamilton</h4>
 			</div>
 		</div>
 	</section>

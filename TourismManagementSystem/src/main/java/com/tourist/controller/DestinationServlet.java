@@ -1,6 +1,6 @@
 package com.tourist.controller;
 
-import java.io.IOException;
+import java.io.IOException;	
 import java.util.List;
 
 import com.tourist.dao.DestinationImplementation;
