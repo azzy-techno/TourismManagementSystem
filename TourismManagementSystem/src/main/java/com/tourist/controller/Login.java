@@ -28,7 +28,8 @@ public class Login extends HttpServlet{
 			HttpSession session = req.getSession();
 			session.setAttribute("name", t1.getName());
 			session.setAttribute("email", t1.getEmail());
-			session.setAttribute("password", t1.getPhone());
+			session.setAttribute("password", t1.getPassword());
+			session.setAttribute("user_id", t1.getId());
 			resp.sendRedirect("home.jsp");
 		}
 		else {

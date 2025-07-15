@@ -11,34 +11,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<header>
-		<nav>
-			<div id="logo">
-				<img src="Images/Saad-removebg-preview.png" alt="Logo">
-			</div>
-			<div id="nav-elements">
-				<ol>
-				 	<li class="nav-list"><a href="index.jsp">Home</a></li>
-					<li class="nav-list"><a href="#">Packages</a></li>
-					<li class="nav-list"><a href="#">Destinations</a></li>
-					<li class="nav-list"><a href="#">Itinerary</a></li>
-				</ol>
-
-			</div>
-			<div id="login">
-				<i class="fa-solid fa-user"></i>
-				<div class="user-dropdown">
-					<div class="dropdown-header">Member Access</div>
-					<div class="dropdown-options">
-						<a href="login.jsp"><i class="fas fa-sign-in-alt"></i> Login</a> <a
-							href="signup.jsp"><i class="fas fa-user-plus"></i> Sign Up</a> <a
-							href="adminLogin.jsp"><i class="fas fa-sign-in-alt"></i>Admin
-							Login</a> <a href="#"><i class="fas fa-question-circle"></i> Help</a>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</header>
+	<%@ include file="header.jsp" %>
 	<div class="videos">
 		<video src="Videos/videoplayback5.mp4" autoplay muted loop></video>
 		<div class="video-overlay">
@@ -69,7 +42,7 @@
 	</div>
 
 	<!-- Gallery section -->
-	<section class="destinations-section">
+	<section class="destinations-section" id="destinations">
 		<h2 class="section-title">POPULAR DESTINATIONS</h2>
 		<div class="destinations-grid">
 			<!-- Row 1 -->
@@ -186,7 +159,7 @@
 	</section>
 
 	<!-- Services Section -->
-	<section class="services-section">
+	<section class="services-section" id="services">
 		<h2 class="services-title">OUR SERVICES</h2>
 		<div class="services-grid">
 			<div class="service-card">
@@ -224,7 +197,7 @@
 	</section>
 
 	<!-- Reviews Section -->
-	<section class="reviews-section">
+	<section class="reviews-section" id="reviews">
 		<h2>What Our Customers Say</h2>
 		<div class="reviews-grid">
 			<div class="review-card">
@@ -248,56 +221,6 @@
 		</div>
 	</section>
 
-	<!-- ======= FOOTER ======= -->
-	<footer class="site-footer">
-		<div class="footer-content">
-			<!-- Footer Columns -->
-			<div class="footer-column">
-				<h3>SAAD TRAVELS</h3>
-				<p>Where Adventure Meets Adrenaline</p>
-				<div class="social-links">
-					<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
-						class="fab fa-twitter"></i></a> <a href="#"><i
-						class="fab fa-instagram"></i></a> <a href="#"><i
-						class="fab fa-youtube"></i></a>
-				</div>
-			</div>
-
-			<div class="footer-column">
-				<h3>Quick Links</h3>
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Destinations</a></li>
-					<li><a href="#">Special Offers</a></li>
-					<li><a href="#">Gallery</a></li>
-				</ul>
-			</div>
-
-			<div class="footer-column">
-				<h3>Support</h3>
-				<ul>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">FAQs</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-					<li><a href="#">Terms & Conditions</a></li>
-				</ul>
-			</div>
-
-			<div class="footer-column">
-				<h3>Newsletter</h3>
-				<p>Subscribe for travel tips and offers</p>
-				<form class="newsletter-form">
-					<input type="email" placeholder="Your Email">
-					<button type="submit">
-						<i class="fas fa-paper-plane"></i>
-					</button>
-				</form>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<p>&copy; 2025 Saad Travels. All Rights Reserved.</p>
-		</div>
-	</footer>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

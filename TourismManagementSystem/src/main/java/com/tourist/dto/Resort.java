@@ -7,6 +7,7 @@ public class Resort {
     private String description;
     private String type;
     private double rating;
+    private double resort_price; // price of the resort
 
     public int getResort_id() {
         return resort_id;
@@ -55,4 +56,14 @@ public class Resort {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    
+    public double getResort_price() {
+		return resort_price;
+	}
+
+	public void setResort_price(double resort_price) {
+		this.resort_price = resort_price;
+	}
+    
+    
 }

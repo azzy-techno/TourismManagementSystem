@@ -1,103 +1,133 @@
-<%@ page import="com.tourist.dto.Destination" %>
-<%@ page import="com.tourist.dao.DestinationImplementation" %>
-<%@ page import="jakarta.servlet.*, jakarta.servlet.http.*" %>
-<%@ page import="java.util.*" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.tourist.dao.PaymentImplementation"%>
+<%@ page import="com.tourist.dto.Payment"%>
+<%@ include file="sessionCheck.jsp"%>
 
 <%
-    int id = Integer.parseInt(request.getParameter("id"));
-    DestinationImplementation dao = new DestinationImplementation();
-    Destination d = dao.getDestination(id);
-    if (d == null) {
-%>
-        <h2>Destination not found</h2>
-<%
-        return;
-    }
+String bookingId = request.getParameter("booking_id");
+String paymentMethod = request.getParameter("payment");
 %>
 
+<%
+String paymentIdStr = request.getParameter("payment_id");
+String paymentStatus = "N/A";
+double amount = 0;
+
+if (paymentIdStr != null) {
+	try {
+		int paymentId = Integer.parseInt(paymentIdStr);
+		PaymentImplementation paymentDAO = new PaymentImplementation();
+		Payment payment = paymentDAO.getPayment(paymentId);
+
+		if (payment != null) {
+	bookingId = String.valueOf(payment.getBookingId());
+	paymentMethod = payment.getPaymentMethod();
+	paymentStatus = payment.getPaymentStatus();
+	amount = payment.getAmount();
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book <%= d.getDestination_name() %></title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .booking-container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        h2 {
-            color: #2a9d8f;
-        }
-        .price {
-            color: #e76f51;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        form {
-            margin-top: 20px;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #2a9d8f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+<title>Booking Confirmed</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+	background-color: #121212;
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.confirmation-box {
+	background-color: #1e1e1e;
+	border: 2px solid goldenrod;
+	padding: 40px;
+	border-radius: 12px;
+	text-align: center;
+	box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.confirmation-box h1 {
+	color: goldenrod;
+	margin-bottom: 20px;
+}
+
+.confirmation-box p {
+	font-size: 18px;
+	margin: 10px 0;
+}
+
+.back-btn {
+	margin-top: 25px;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: goldenrod;
+	color: #000;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.back-btn:hover {
+	background-color: orange;
+}
+
+.status-success {
+	color: lightgreen;
+	font-weight: bold;
+}
+
+.status-pending {
+	color: orange;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 
-<div class="booking-container">
-    <h2>Book Your Trip to <%= d.getDestination_name() %></h2>
-    <img src="<%= d.getDestination_image() %>" alt="<%= d.getDestination_name() %>">
-    <p><%= d.getDestination_paragraph() %></p>
-    <p class="price">Only ₹<%= d.getDestination_price() %>/day</p>
 
-    <!-- Booking Form -->
-    <form action="confirmBooking.jsp" method="post">
-        <input type="hidden" name="destination_id" value="<%= d.getDestination_id() %>">
-        <input type="hidden" name="destination_name" value="<%= d.getDestination_name() %>">
-        <label>Your Full Name</label>
-        <input type="text" name="full_name" required>
+	<div class="confirmation-box">
+		<h1>Booking Confirmed ✅</h1>
+		<p>
+			<strong>Booking ID:</strong>
+			<%=bookingId%></p>
+		<p>
+			<strong>Payment Method:</strong>
+			<%=paymentMethod.toUpperCase()%></p>
+		<p>
+			<strong>Payment Status:</strong> <span
+				class="<%="Success".equalsIgnoreCase(paymentStatus) ? "status-success" : "status-pending"%>">
+				<%=paymentStatus%>
+			</span>
+		</p>
+		<p>
+			<strong>Amount Paid:</strong> ₹<%=amount%></p>
+		<p>Thank you for booking with us!</p>
 
-        <label>Email Address</label>
-        <input type="email" name="email" required>
+		<form action="downloadReceipt" method="get" style="margin-top: 15px;">
+			<input type="hidden" name="booking_id" value="<%=bookingId%>">
+			<button class="back-btn" type="submit">Download Receipt
+				(PDF)</button>
+		</form>
 
-        <label>Travel Date</label>
-        <input type="date" name="travel_date" required>
 
-        <label>Number of Days</label>
-        <input type="text" name="no_of_days" required>
-
-        <button type="submit">Confirm Booking</button>
-    </form>
-</div>
+		<form action="home.jsp" method="get">
+			<button class="back-btn" type="submit">Back to Home</button>
+		</form>
+	</div>
 
 </body>
 </html>

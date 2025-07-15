@@ -22,80 +22,91 @@ public class ItineraryServlet extends HttpServlet {
 
         String action = request.getParameter("action");
 
+        boolean result = false;
+
         try {
             switch (action) {
                 case "add":
-                    addItinerary(request);
+                    result = addItinerary(request);
+                    request.getSession().setAttribute("message", result ? "Itinerary added successfully!" : "Failed to add itinerary.");
                     break;
                 case "update":
-                    updateItinerary(request);
+                    result = updateItinerary(request);
+                    request.getSession().setAttribute("message", result ? "Itinerary updated successfully!" : "Failed to update itinerary.");
                     break;
                 case "delete":
-                    deleteItinerary(request);
+                    result = deleteItinerary(request);
+                    request.getSession().setAttribute("message", result ? "Itinerary deleted successfully!" : "Failed to delete itinerary.");
                     break;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            request.getSession().setAttribute("message", "An error occurred.");
         }
+
 
         response.sendRedirect("adminDashboard.jsp");
     }
 
-    private void addItinerary(HttpServletRequest request) {
+    private boolean addItinerary(HttpServletRequest request) {
         try {
-            String itinerary_day = request.getParameter("itinerary_day");
-            String itinerary_description = request.getParameter("itinerary_description");
-            int destination_id = Integer.parseInt(request.getParameter("destination_id"));
-
-            Itinerary itinerary = new Itinerary();
-            itinerary.setItinerary_day(itinerary_day);
-            itinerary.setItinerary_description(itinerary_description);
-            itinerary.setDestination_id(destination_id);
-
-            itineraryDAO.addItinerary(itinerary);
-
+            Itinerary itinerary = extractItineraryFromRequest(request, false);
+            return itineraryDAO.addItinerary(itinerary);
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    private void updateItinerary(HttpServletRequest request) {
+    private boolean updateItinerary(HttpServletRequest request) {
         try {
-            int itinerary_id = Integer.parseInt(request.getParameter("itinerary_id"));
-            String itinerary_day = request.getParameter("itinerary_day");
-            String itinerary_description = request.getParameter("itinerary_description");
-            int destination_id = Integer.parseInt(request.getParameter("destination_id"));
-
-            Itinerary itinerary = new Itinerary();
-            itinerary.setItinerary_id(itinerary_id);
-            itinerary.setItinerary_day(itinerary_day);
-            itinerary.setItinerary_description(itinerary_description);
-            itinerary.setDestination_id(destination_id);
-
-            itineraryDAO.updateItinerary(itinerary);
-
+            Itinerary itinerary = extractItineraryFromRequest(request, true);
+            return itineraryDAO.updateItinerary(itinerary);
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    private void deleteItinerary(HttpServletRequest request) {
+    private boolean deleteItinerary(HttpServletRequest request) {
         try {
             int itinerary_id = Integer.parseInt(request.getParameter("itinerary_id"));
-            itineraryDAO.deleteItinerary(itinerary_id);
+            return itineraryDAO.deleteItinerary(itinerary_id);
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        // Optional: View all itineraries in admin page
         List<Itinerary> itineraries = itineraryDAO.getAllItineraries();
         request.setAttribute("itineraries", itineraries);
         RequestDispatcher dispatcher = request.getRequestDispatcher("admin_itinerary.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private Itinerary extractItineraryFromRequest(HttpServletRequest request, boolean isUpdate) {
+        Itinerary itinerary = new Itinerary();
+
+        if (isUpdate) {
+            itinerary.setItinerary_id(Integer.parseInt(request.getParameter("itinerary_id")));
+        }
+
+        itinerary.setItinerary_day1(request.getParameter("itinerary_day1"));
+        itinerary.setItinerary_day1_description(request.getParameter("itinerary_day1_description"));
+        itinerary.setItinerary_day2(request.getParameter("itinerary_day2"));
+        itinerary.setItinerary_day2_description(request.getParameter("itinerary_day2_description"));
+        itinerary.setItinerary_day3(request.getParameter("itinerary_day3"));
+        itinerary.setItinerary_day3_description(request.getParameter("itinerary_day3_description"));
+        itinerary.setItinerary_day4(request.getParameter("itinerary_day4"));
+        itinerary.setItinerary_day4_description(request.getParameter("itinerary_day4_description"));
+        itinerary.setItinerary_day5(request.getParameter("itinerary_day5"));
+        itinerary.setItinerary_day5_description(request.getParameter("itinerary_day5_description"));
+        itinerary.setItinerary_price(Integer.parseInt(request.getParameter("itinerary_price")));
+        itinerary.setDestination_id(Integer.parseInt(request.getParameter("destination_id")));
+
+        return itinerary;
     }
 }

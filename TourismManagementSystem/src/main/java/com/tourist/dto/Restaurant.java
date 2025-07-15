@@ -7,6 +7,7 @@ public class Restaurant {
     private String description; // ✅ Newly added
     private String cuisine_type;
     private double rating;
+    private double restaurant_price; // price of the restaurant
 
     public int getRestaurant_id() {
         return restaurant_id;
@@ -55,4 +56,23 @@ public class Restaurant {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    
+    	public double getRestaurant_price() {
+		return restaurant_price;
+	}
+    	public void setRestaurant_price(double restaurant_price) {
+		this.restaurant_price = restaurant_price;
+	}
+    @Override
+	public String toString() {
+		return "Restaurant{" +
+				"restaurant_id=" + restaurant_id +
+				", destination_id=" + destination_id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", cuisine_type='" + cuisine_type + '\'' +
+				", rating=" + rating +
+				", restaurant_price=" + restaurant_price +
+				'}';
+	}
 }

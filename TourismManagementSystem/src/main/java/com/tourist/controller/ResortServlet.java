@@ -21,33 +21,44 @@ public class ResortServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        HttpSession session = request.getSession(); // ✅ Flash messages
+
+        boolean result = false;
 
         try {
             switch (action) {
                 case "add":
-                    addResort(request);
+                    result = addResort(request);
                     break;
                 case "update":
-                    updateResort(request);
+                    result = updateResort(request);
                     break;
                 case "delete":
-                    deleteResort(request);
+                    result = deleteResort(request);
                     break;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            session.setAttribute("message", "Server error occurred.");
         }
 
-        response.sendRedirect("adminDashboard.jsp"); // Assuming this is your admin page
+        if (result) {
+            session.setAttribute("message", "Operation successful.");
+        } else {
+            session.setAttribute("message", "Operation failed.");
+        }
+
+        response.sendRedirect("adminDashboard.jsp");
     }
 
-    private void addResort(HttpServletRequest request) {
+    private boolean addResort(HttpServletRequest request) {
         try {
             int destinationId = Integer.parseInt(request.getParameter("destination_id"));
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             String type = request.getParameter("type");
             double rating = Double.parseDouble(request.getParameter("rating"));
+            double resortPrice = Double.parseDouble(request.getParameter("resort_price"));
 
             Resort resort = new Resort();
             resort.setDestination_id(destinationId);
@@ -55,20 +66,23 @@ public class ResortServlet extends HttpServlet {
             resort.setDescription(description);
             resort.setType(type);
             resort.setRating(rating);
+            resort.setResort_price(resortPrice);
 
-            resortDAO.insertData(resort);
+            return resortDAO.insertData(resort); // ✅ Make sure your DAO method returns boolean
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    private void updateResort(HttpServletRequest request) {
+    private boolean updateResort(HttpServletRequest request) {
         try {
             int resortId = Integer.parseInt(request.getParameter("resort_id"));
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             String type = request.getParameter("type");
             double rating = Double.parseDouble(request.getParameter("rating"));
+            double resortPrice = Double.parseDouble(request.getParameter("resort_price"));
 
             Resort resort = new Resort();
             resort.setResort_id(resortId);
@@ -76,21 +90,24 @@ public class ResortServlet extends HttpServlet {
             resort.setDescription(description);
             resort.setType(type);
             resort.setRating(rating);
+            resort.setResort_price(resortPrice);
 
-            resortDAO.updateData(resort);
+            return resortDAO.updateData(resort); // ✅ DAO should return boolean
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    private void deleteResort(HttpServletRequest request) {
+    private boolean deleteResort(HttpServletRequest request) {
         try {
             int resortId = Integer.parseInt(request.getParameter("resort_id"));
             Resort resort = new Resort();
             resort.setResort_id(resortId);
-            resortDAO.deleteData(resort);
+            return resortDAO.deleteData(resort); // ✅ DAO should return boolean
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -100,7 +117,7 @@ public class ResortServlet extends HttpServlet {
 
         List<Resort> resorts = resortDAO.getAllResorts();
         request.setAttribute("resorts", resorts);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin_resorts.jsp"); // Replace if using a different JSP
+        RequestDispatcher dispatcher = request.getRequestDispatcher("admin_resorts.jsp");
         dispatcher.forward(request, response);
     }
 }

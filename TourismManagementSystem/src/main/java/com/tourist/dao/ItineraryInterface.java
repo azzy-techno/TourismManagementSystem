@@ -4,10 +4,12 @@ import com.tourist.dto.Itinerary;
 import java.util.List;
 
 public interface ItineraryInterface {
-    void addItinerary(Itinerary itinerary);
-    void updateItinerary(Itinerary itinerary);
-    void deleteItinerary(int itineraryId);
+    boolean addItinerary(Itinerary itinerary);
+    boolean updateItinerary(Itinerary itinerary);
+    boolean deleteItinerary(int itineraryId);
     List<Itinerary> getAllItineraries();
     List<Itinerary> getItineraryByDestinationId(int destinationId);
     Itinerary getItineraryById(int itineraryId);
+    Itinerary getSingleItineraryByDestinationId(int destinationId);
+
 }
